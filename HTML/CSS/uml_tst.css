@@ -1,0 +1,44 @@
+#container{
+    margin: 100px 250px 100px 250px;
+}
+
+#title{
+    margin-top:30px;
+    background-color: #404040;
+    height:65px;
+    text-align: center;
+    line-height:65px;
+    font-size:30px;
+    font-weight: bold;
+}
+
+#papersInfomation {
+    margin-top: 20px;
+}
+
+#papersInfomation table{
+    width:100%;
+}
+
+#papersContent{
+    margin-top:30px;
+}
+
+#shortAnswer textarea{
+    width:800px;
+    height:100px;
+}
+
+#foot{
+    text-align: center;
+}
+
+.spanWithUnderline{
+    text-decoration: underline;
+}
+
+.questionArea{
+    margin-bottom:20px;
+}
+
+

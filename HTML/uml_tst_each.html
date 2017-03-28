@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UML</title>
+    <link href="CSS/uml_tst.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<div id="container">
+    <div id="head">
+        西安软件服务外包学院
+        <hr>
+    </div>
+
+    <div id="content">
+        <div id="title">
+            统一建模语言理论测试
+        </div>
+        <div id="papersInfomation">
+            <table>
+                <tr>
+                    <td>
+                        考试科目：<span class="spanWithUnderline">统一建模语言UML</span>
+                    </td>
+                    <td>
+                        时间：<span class="spanWithUnderline">100分钟</span>
+                    </td>
+                    <td>
+                        得分：<input type="text" id="score" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        班&#12288;&#12288;级：<span class="spanWithUnderline">&nbsp;&nbsp;&nbsp;</span>
+                    </td>
+                    <td>
+                        学号：<span class="spanWithUnderline">&nbsp;&nbsp;&nbsp;</span>
+                    </td>
+                    <td>
+                        姓名：<span class="spanWithUnderline">&nbsp;&nbsp;&nbsp;</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="papersContent">
+            <form action="#">
+                <div id="blank" class="questionArea">
+                    <div id="blank11">
+                        <strong>一、填空题</strong><br/>
+                        <label for="11"></label>
+                        <span>1.UML的中文全称是：</span>
+                        <input id="11" type="text" name="11">
+                    </div>
+
+                    <div id="blank12">
+                        <label for="121"></label>
+                        <span>2.对象最突出的特征是：</span>
+                        <input id="121" type="text" name="121">
+                        <input type="text" name="122">
+                        <input type="text" name="123">
+                    </div>
+                </div>
+
+                <div id="singleChoice" class="questionArea">
+                    <strong>二、选择题</strong><br/>
+                    <div class="choiceQuestion">
+                        1.UML与软件工程关系是：【】<br/>
+                        <input type="radio" name="21" value="A">
+                        A<br/>
+
+                        <input type="radio" name="21" value="B">
+                        B<br/>
+
+                        <input type="radio" name="21" value="C">
+                        C<br/>
+
+                        <input type="radio" name="21" value="D">
+                        D<br/>
+                    </div>
+                    <div class="choiceQuestion">
+                        2.Java语言支持：【】<br/>
+                        <input type="radio" name="22" value="A">
+                        A<br/>
+
+                        <input type="radio" name="22" value="B">
+                        B<br/>
+
+                        <input type="radio" name="22" value="C">
+                        C<br/>
+
+                        <input type="radio" name="22" value="D">
+                        D<br/>
+                    </div>
+                </div>
+
+                <div id="multiChoice" class="questionArea">
+                    <strong>三、多选题</strong><br/>
+
+                    <div class="choiceQuestion">
+                        1.用例的粒度分为：【】<br/>
+
+                        <input type="checkbox" name="31" value="A">
+                        A<br/>
+
+                        <input type="checkbox" name="31" value="B">
+                        B<br/>
+
+                        <input type="checkbox" name="31" value="C">
+                        C<br/>
+
+                        <input type="checkbox" name="31" value="D">
+                        D<br/>
+                    </div>
+
+                    <div class="choiceQuestion">
+                        2.类图组成：【】<br/>
+
+                        <input type="checkbox" name="32" value="A">
+                        A<br/>
+
+                        <input type="checkbox" name="32" value="B">
+                        B<br/>
+
+                        <input type="checkbox" name="32" value="C">
+                        C<br/>
+
+                        <input type="checkbox" name="32" value="D">
+                        D<br/>
+
+                    </div>
+                </div>
+
+                <div id="judge" class="questionArea">
+                    <strong>四、判断题</strong><br/>
+
+                    <div class="judgeQuestion">
+                        1.用例图只是：【】<br/>
+
+                        <input type="radio" name="41" value="A">
+                        A<br/>
+
+                        <input type="radio" name="41" value="B">
+                        B<br/>
+
+                    </div>
+
+                    <div class="judgeQuestion">
+                        2.状态图：【】<br/>
+
+                        <input type="radio" name="42" value="A">
+                        A<br/>
+
+                        <input type="radio" name="42" value="B">
+                        B<br/>
+
+                    </div>
+                </div>
+
+                <div id="shortAnswer" class="questionArea">
+                    <strong>五、简答题</strong><br/>
+                    1.简述<br/>
+                    <textarea id="51"></textarea>
+                </div>
+                <input id="commit" type="button" value="提交">
+            </form>
+        </div>
+    </div>
+
+    <div id="foot">
+        <strong>1/1</strong>
+    </div>
+</div>
+</body>
+</html>
+
+
+<script type="text/javascript" src="uml_tst.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#commit").click(function () {
+      let results = {填空题: [], 选择题: [], 多选题: [], 判断题: [], 简答题: []};
+
+      let i = 1;
+      $("#blank>div").each(function () {
+        let answer = [];
+        $(this).children("input").each(function () {
+          answer.push($(this).val());
+        });
+        results.填空题.push({
+          id: i++,
+          answer: answer
+        });
+      });
+
+      i = 1;
+      $("#singleChoice>div").each(function () {
+        results.选择题.push({
+          id: i++,
+          answer: [$(this).children("input:checked").val()]
+        });
+      });
+
+      i = 1;
+      $("#multiChoice>div").each(function () {
+        let answer = [];
+        $(this).children("input:checked").each(function () {
+          answer.push($(this).val());
+        });
+        results.多选题.push({
+          id: i++,
+          answer: answer
+        });
+      });
+
+      i = 1;
+      $("#judge>div").each(function () {
+        results.判断题.push({
+          id: i++,
+          answer: [$(this).children("input:checked").val()]
+        });
+      });
+
+      results.简答题.push({
+        id: 1,
+        answer: [$("#51").val()]
+      });
+
+      //比较答案
+      score = CompareAnswer(results);
+
+
+      $("#score").val(score);
+      $('body,html').animate({scrollTop: 0}, 1);
+    })
+  })
+</script>
